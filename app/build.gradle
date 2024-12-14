@@ -7,15 +7,16 @@ android {
     compileSdkVersion rootProject.ext.versionCompiler
     defaultConfig {
         applicationId "com.jiangdg.ausbc"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.versionTarget
+        minSdkVersion rootProject.ext.minSdkVersion  // Utilisation de la variable
+        targetSdkVersion rootProject.ext.versionTarget  // Utilisation de la variable
+        compileSdkVersion rootProject.ext.versionCompiler  // Utilisation de la variable
         versionCode rootProject.ext.versionCode
         versionName rootProject.ext.versionNameString
-
+        namespace = "com.jiangdg.ausbc"
         multiDexEnabled true
 
-        ndk{
-            abiFilters 'armeabi-v7a','arm64-v8a'
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
         }
     }
     buildTypes {
@@ -37,10 +38,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-
-    // libuvc module should need set local.properties
-    // eg: ndk.dir=D\:\\Developer\\Environment\\AndroidSdks\\ndk\\21.0.6113669
-//    ndkVersion rootProject.ext.ndkVersion
 }
 
 dependencies {
@@ -55,7 +52,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
     implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:$quick_version"
     implementation "com.afollestad.material-dialogs:core:$dialog_version"
-
+    implementation 'org.apache.ant:ant:1.10.13'
     implementation "com.tencent.bugly:crashreport:$bugly_version"
     implementation "com.tencent.bugly:nativecrashreport:$bugly_native_version"
 
@@ -69,5 +66,5 @@ dependencies {
     implementation project(':libausbc')
 
     // demo
-//    implementation 'com.github.jiangdongguo.AndroidUSBCamera:libausbc:3.3.3'
+    // implementation 'com.github.jiangdongguo.AndroidUSBCamera:libausbc:3.3.3'
 }
